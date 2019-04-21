@@ -60,7 +60,7 @@
 								<span>☆</span>
 								<span>☆</span>
 								<span>☆</span>
-							</div>						
+							</div>
 							<div class="clearfix"></div>
 						</div>
 					</div>

@@ -24,29 +24,18 @@
                     <li><a href="index.jsp" class="active">首页</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">买买买<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-4">
-
-                        </ul>
                     </li>
                     <li class="dropdown grid">
                         <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">我的订单<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-4">
-
-                        </ul>
                     </li>
                     <li class="dropdown grid">
                         <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">新品促销<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-4">
-
-                        </ul>
                     </li>
                     <li class="dropdown grid">
                         <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">关于我们<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-
-                        </ul>
                     </li>
                 </ul>
+        ..
                 <!--/.navbar-collapse-->
             </div>
             <!--//navbar-header-->

@@ -1,3 +1,4 @@
+<%@ page import="edu.hbuas.cake.model.javabean.Cake" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -40,50 +41,37 @@
 	<!--//single-page-->
 	<div class="single">
 		<div class="container">
-			<div class="single-grids">				
-				<div class="col-md-4 single-grid">		
-					<div class="flexslider">
-						<ul class="slides">
-							<li data-thumb="images/s1.png">
-								<div class="thumb-image"> <img src="images/s1.png" data-imagezoom="true" class="img-responsive"> </div>
+			<div class="single-grids">
+				<div class="col-md-4 single-grid">
+
+							<li data-thumb="<%=((Cake)request.getAttribute("cake")).getImageUrl()%>">
+								<div class="thumb-image"> <img src="<%=((Cake)request.getAttribute("cake")).getImageUrl()%>" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
-							<li data-thumb="images/s2.png">
-								 <div class="thumb-image"> <img src="images/s2.png" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
-							<li data-thumb="images/s3.png">
-							   <div class="thumb-image"> <img src="images/s3.png" data-imagezoom="true" class="img-responsive"> </div>
-							</li> 
-						</ul>
-					</div>
-				</div>	
+
+				</div>
 				<div class="col-md-4 single-grid simpleCart_shelfItem">		
-					<h3>好吃的新鲜黑森林蛋糕混合了巧克力片</h3>
-					<p>切蛋糕是庆祝一个特殊时刻的最佳方式之一。还有什么比吃一个美味可口的巧克力薯条蛋糕更好的庆祝方式呢</p>
+					<h3><%=((Cake)request.getAttribute("cake")).getCakeName()%></h3>
+					<p><%=((Cake)request.getAttribute("cake")).getDescribe()%></p>
 					<ul class="size">
 						<h3>尺寸</h3>
-							<li><a href="#">六寸</a></li>
-							<li><a href="#">八寸</a></li>
-							<li><a href="#">十寸</a></li>
-                            <li><a href="#">双层</a></li>
-                            <li><a href="#">三层</a></li>
+							<li><a href="#"><%=((Cake)request.getAttribute("cake")).getType().getSize()%></a></li>
 					</ul>
 					<ul class="size">
 						<h3>口味</h3>
-							<li><a href="#">草莓</a></li>
-							<li><a href="#">蜂蜜</a></li>
-							<li><a href="#">混合水果</a></li>
+							<li><a href="#"><%=((Cake)request.getAttribute("cake")).getType().getFlavor()%></a></li>
+					</ul>
+					<ul class="size">
+						<h3>库存</h3>
+						<li><a href="#"><%=((Cake)request.getAttribute("cake")).getStock()%></a></li>
 					</ul>
 					<div class="galry">
 						<div class="prices">
-							<h5 class="item_price">295.00</h5>
+							<h5 class="item_price"><%=((Cake)request.getAttribute("cake")).getPrice()%></h5>
 						</div>
-						<div class="rating">
-							<span>☆</span>
-							<span>☆</span>
-							<span>☆</span>
-							<span>☆</span>
-							<span>☆</span>
-						</div>
+						<ul class="size">
+							<h3>折扣</h3>
+							<li><a href="#"><%=((Cake)request.getAttribute("cake")).getSales()%></a></li>
+						</ul>
 						<div class="clearfix"></div>
 					</div>
 					<p class="qty"> 数量 :  </p><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
