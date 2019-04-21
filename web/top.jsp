@@ -6,7 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="js/index.js"> </script>
 <div class="header">
+    <div id="userDiv"></div>
     <div class="container">
         <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
@@ -63,20 +65,21 @@
                     </form>
                 </div>
             </div>
-            <div class="header-right login">
+            <div id="userDivv"></div>
+            <div class="header-right login" id="loginDiv">
                 <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
                 <div id="loginBox">
-                    <form id="loginForm">
+                    <form id="loginForm"  >
                         <fieldset id="body">
                             <fieldset>
-                                <label for="email">邮箱地址</label>
-                                <input type="text" name="email" id="email">
+                                <label for="userId">用户账号</label>
+                                <input type="text" name="userId" id="userId">
                             </fieldset>
                             <fieldset>
                                 <label for="password">密码</label>
                                 <input type="password" name="password" id="password">
                             </fieldset>
-                            <input type="submit" id="login" value="注册">
+                            <input type="button" id="login" value="登录">
                             <label for="checkbox"><input type="checkbox" id="checkbox"> <i>记住我</i></label>
                         </fieldset>
                         <p>新用户 ? <a class="sign" href="account.jsp">注册吧</a> <span><a href="#">密码忘记了呢 ?</a></span></p>

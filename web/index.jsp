@@ -17,6 +17,7 @@
 <!-- //js -->	
 <!-- cart -->
 <script src="js/simpleCart.min.js"> </script>
+<%--<script src="js/index.js"> </script>--%>
 <!-- cart -->
 </head>
 <body>
