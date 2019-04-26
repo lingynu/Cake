@@ -13,8 +13,7 @@ hr{
 .content{
     margin: auto;
     width: 90%;
-    height: 200px;
-    border: 1px solid green;
+    overflow:auto;
 }
 .contentleft{
     float: left;
@@ -39,17 +38,28 @@ hr{
 .detail-content{
     float: left;
     width: 84%;
+    overflow:auto;
     border: 1px solid gray;
+}
+.detail-comment{
+    height: 150px;
+    background-color: azure;
+}
+.detail{
+    text-align: left;
+}
+.reply{
+    width: 97%;
+    text-align: center;
 }
 .contentright{
     float: left;
     width: 19%;
     border: 1px solid gray;
 }
-.reply{
-    border: 1px solid red;
-}
 .col-sm-10{
+    float: right;
+    margin-top: 20px;
     width: 98%;
 }
 .col-sm-offset-2 {
@@ -62,6 +72,28 @@ hr{
     margin-top: 20px;
     width: 100%;
     overflow:auto;
-    border: 1px solid red;
+}
+.li{
+    list-style: none;
+    width: 100%;
+    background-color: azure;
+}
+.lidiv{
+    text-align: left;
+}
+table{
+    border-collapse: collapse;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+td{
+    width: 14px;
+    height: 30px;
+}
+td:nth-child(odd){
+    background-image: url("/images/s_l_g.png");
+}
+td:nth-child(even){
+    background-image: url("/images/s_r_g.png");
 }
 

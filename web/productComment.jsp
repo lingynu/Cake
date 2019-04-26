@@ -9,6 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="css/productComment.css" type="text/css" rel="stylesheet">
+<script src="js/productComment.js" type="text/javascript"></script>
 <C:if test="${empty requestScope.allComments}">
     <C:redirect url="/CommentServlet?method=listCommentByPage&cakeId=1&page=1&count=10"></C:redirect>
     <% System.out.println("进入if"); %>
@@ -26,6 +27,21 @@
                     </div>
                     <div class="liright">
                         <div class="lirighttop">
+                            <input type="hidden" value="${n.score}" id="score"/>
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
                             ${n.content}
                         </div>
                         <div class="lirightbotton">
@@ -33,7 +49,7 @@
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 0
                             </a>
                             <a class="reviews" href="/CommentServlet?method=listCommentReply&userId=1&cakeId=1&commentId=${n.commentId}">
-                                <img src="images/message.png">0
+                                <img src="images/message.png">
                             </a>
                         </div>
                     </div>

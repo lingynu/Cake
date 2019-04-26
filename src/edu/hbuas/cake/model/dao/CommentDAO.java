@@ -14,4 +14,6 @@ public interface CommentDAO {
     public List<Comment> listCommentByPage(int cakeId, int page, int count);
     //通过userId,cakeId,commentId显示评论回复
     public List<CommentReply> listCommentReply(int userId, int cakeId, int commentId);
+    //通过commentId查找评论信息
+    public Comment listCommentById(int commentId);
 }

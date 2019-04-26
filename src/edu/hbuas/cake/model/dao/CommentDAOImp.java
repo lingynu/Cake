@@ -41,17 +41,16 @@ public class CommentDAOImp extends BaseDAOImp implements CommentDAO {
      */
     @Override
     public boolean addComment(Comment comment) {
-        String addCommentSQL="insert into comment(id,nickname,content,score,userId,cakeId) values(?,?,?,?,?,?)";
+        String addCommentSQL="insert into comment(nickname,content,score,userId,cakeId) values(?,?,?,?,?)";
         boolean result = false;
 
         try {
             PreparedStatement pre = getPre(addCommentSQL);
-            pre.setLong(1 ,comment.getCommentId());
-            pre.setString(2 ,comment.getNickname());
-            pre.setString(3 ,comment.getContent());
-            pre.setFloat(4 ,comment.getScore());
-            pre.setLong(5 ,comment.getUserId());
-            pre.setLong(6 ,comment.getCakeId());
+            pre.setString(1 ,comment.getNickname());
+            pre.setString(2 ,comment.getContent());
+            pre.setFloat(3 ,comment.getScore());
+            pre.setLong(4 ,comment.getUserId());
+            pre.setLong(5 ,comment.getCakeId());
 
             result = pre.executeUpdate()>0?true:false;
 
@@ -127,6 +126,35 @@ public class CommentDAOImp extends BaseDAOImp implements CommentDAO {
         }
 
         return commentReply;
+    }
+
+    @Override
+    public Comment listCommentById(int commentId) {
+        Comment comment = new Comment();
+        try{
+            ResultSet rs = getSta().executeQuery("select * from comment where id = " + commentId);
+
+            while (rs.next()) {
+                comment.setCommentId(rs.getInt("id"));
+                comment.setNickname(rs.getString("nickname"));
+                comment.setContent(rs.getString("content"));
+                comment.setScore(rs.getFloat("score"));
+                comment.setUserId(rs.getInt("userId"));
+                comment.setCakeId(rs.getInt("cakeId"));
+            }
+
+//            PreparedStatement pre = getPre(listCommentByIdSQL);
+//            pre.setInt(1, comment.getCommentId());
+//            pre.setString(2, comment.getNickname());
+//            pre.setString(3, comment.getContent());
+//            pre.setFloat(4, comment.getScore());
+//            pre.setInt(5, comment.getUserId());
+//            pre.setInt(6, comment.getCakeId());
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return comment;
     }
 
 

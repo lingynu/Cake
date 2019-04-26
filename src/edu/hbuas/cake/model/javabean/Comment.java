@@ -9,7 +9,7 @@ public class Comment {
     private int userId;
     private int cakeId;
 
-    public long getCommentId() {
+    public int getCommentId() {
         return commentId;
     }
 
@@ -41,7 +41,7 @@ public class Comment {
         this.score = score;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -49,7 +49,7 @@ public class Comment {
         this.userId = userId;
     }
 
-    public long getCakeId() {
+    public int getCakeId() {
         return cakeId;
     }
 

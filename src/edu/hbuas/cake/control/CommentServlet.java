@@ -2,6 +2,9 @@ package edu.hbuas.cake.control;
 
 import edu.hbuas.cake.model.dao.CommentDAO;
 import edu.hbuas.cake.model.dao.CommentDAOImp;
+import edu.hbuas.cake.model.dao.CommentReplyDAO;
+import edu.hbuas.cake.model.dao.CommentReplyDAOImp;
+import edu.hbuas.cake.model.javabean.Cake;
 import edu.hbuas.cake.model.javabean.Comment;
 import edu.hbuas.cake.model.javabean.CommentReply;
 import edu.hbuas.cake.model.javabean.PageBean;
@@ -19,11 +22,13 @@ import java.util.List;
 @WebServlet(name = "CommentServlet",urlPatterns = "/CommentServlet")
 public class CommentServlet extends HttpServlet {
     private CommentDAO commentDAO;
+    private CommentReplyDAO commentReplyDAO;
     private CommentService commentService;
 
     @Override
     public void init() throws ServletException {
         commentDAO = new CommentDAOImp();
+        commentReplyDAO = new CommentReplyDAOImp();
         commentService = new CommentServiceImp();
     }
 
@@ -48,6 +53,11 @@ public class CommentServlet extends HttpServlet {
             }
             case "listCommentReply":{
                 listCommentReply(request, response);
+                break;
+            }
+            case "submitCommentReply":{
+                submitCommentReply(request, response);
+                break;
             }
         }
     }
@@ -103,11 +113,43 @@ public class CommentServlet extends HttpServlet {
     private void listCommentReply(HttpServletRequest request, HttpServletResponse response) {
         String userId = request.getParameter("userId");
         String cakeId = request.getParameter("cakeId");
-        String commentId = request.getParameter("commnetId");
+        String commentId = request.getParameter("commentId");
 
-        CommentReply commentReply = commentService.processCommentReply(Integer.parseInt(userId), Integer.parseInt(cakeId), Integer.parseInt(commentId));
+        System.out.println("userId:" + userId + ", cakeId:" + cakeId + ", commentId:" + commentId);
 
+        try{
+            Comment com = commentService.processListCommentById(Integer.parseInt(commentId));
+            List<CommentReply> commentReply =  commentService.processCommentReply(Integer.parseInt(userId), Integer.parseInt(cakeId), Integer.parseInt(commentId));
+
+            request.setAttribute("comment", com);
+            request.setAttribute("allCommentReply", commentReply);
+
+            System.out.println(com);
+
+            request.getRequestDispatcher("commentDetails.jsp").forward(request, response);
+        }catch (Exception e){
+            e.getStackTrace();
+        }
     }
 
+    /**
+     * 提交评论回复的方法
+     * @param request
+     * @param response
+     */
+    private void submitCommentReply(HttpServletRequest request, HttpServletResponse response) {
+
+        CommentReply commentReply = commentService.processsSbmitCommentReply(request, response);
+        boolean result = commentReplyDAO.addCommentReply(commentReply);
+
+        if (result){
+            System.out.println("数据库添加回复评论成功");
+            //评论成功后JSP页面弹框提示，确认之后返回订单页面
+        }else{
+            System.out.println("数据库添加回复评论失败");
+            //评论失败后。。。
+        }
+
+    }
 
 }
