@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AddressDAO {
     //根据用户id查询出此用户的所有地址信息
-    public List<Address> listAllAddress(int userId);
+    public List<Address> listAllAddress(int userId)throws Exception;
     public boolean addAddress(Address address);
     public boolean updateAddress(Address address);
     public boolean deleteAddress(int addressId);

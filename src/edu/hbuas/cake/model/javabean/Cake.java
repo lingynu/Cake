@@ -11,6 +11,13 @@ public class Cake {
     private String describe;
     private CakeType type;
 
+    public Cake() {
+    }
+
+    public Cake(int cakeId) {
+        this.cakeId = cakeId;
+    }
+
     public int getCakeId() {
         return cakeId;
     }
@@ -73,5 +80,19 @@ public class Cake {
 
     public void setType(CakeType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Cake{" +
+                "cakeId=" + cakeId +
+                ", cakeName='" + cakeName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", sales=" + sales +
+                ", describe='" + describe + '\'' +
+                ", type=" + type +
+                '}';
     }
 }

@@ -60,7 +60,7 @@ public class UserServlet extends HttpServlet {
     //用户登陆的方法，判断是否记住密码，cookie里是否有用户信息
     protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         System.out.println("nininiini");
-        Long userId = Long.parseLong(request.getParameter("userId"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
         String password = request.getParameter("password");
         System.out.println("登陆的方法：\t"+userId+"\t\t"+password);
         try{

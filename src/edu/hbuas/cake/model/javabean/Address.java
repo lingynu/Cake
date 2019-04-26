@@ -8,6 +8,13 @@ public class Address {
     private String place;
     private int userId;
 
+    public Address() {
+    }
+
+    public Address(int addressId) {
+        this.addressId = addressId;
+    }
+
     public int getAddressId() {
         return addressId;
     }
@@ -46,5 +53,16 @@ public class Address {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", place='" + place + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

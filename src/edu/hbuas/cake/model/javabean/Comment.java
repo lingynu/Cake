@@ -56,4 +56,16 @@ public class Comment {
     public void setCakeId(int cakeId) {
         this.cakeId = cakeId;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", nickname='" + nickname + '\'' +
+                ", content='" + content + '\'' +
+                ", score=" + score +
+                ", userId=" + userId +
+                ", cakeId=" + cakeId +
+                '}';
+    }
 }

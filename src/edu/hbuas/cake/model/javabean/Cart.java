@@ -48,4 +48,15 @@ public class Cart {
     public void setCake(Cake cake) {
         this.cake = cake;
     }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "cartId=" + cartId +
+                ", number=" + number +
+                ", allPrice=" + allPrice +
+                ", userId=" + userId +
+                ", cake=" + cake +
+                '}';
+    }
 }

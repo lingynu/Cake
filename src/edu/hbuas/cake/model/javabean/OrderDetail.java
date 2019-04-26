@@ -4,10 +4,14 @@ package edu.hbuas.cake.model.javabean;
 public class OrderDetail {
     private int orderDetailId;
     private int number;
-    private int commentStatus;
+    private String commentStatus;
     //取cake的名字，id，价格，类型，图片
     private Cake cake;
     private int orderId;
+
+    public OrderDetail() {
+    }
+
 
     public int getOrderDetailId() {
         return orderDetailId;
@@ -25,11 +29,11 @@ public class OrderDetail {
         this.number = number;
     }
 
-    public int getCommentStatus() {
+    public String getCommentStatus() {
         return commentStatus;
     }
 
-    public void setCommentStatus(int commentStatus) {
+    public void setCommentStatus(String commentStatus) {
         this.commentStatus = commentStatus;
     }
 
@@ -47,5 +51,16 @@ public class OrderDetail {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "orderDetailId=" + orderDetailId +
+                ", number=" + number +
+                ", commentStatus=" + commentStatus +
+                ", cake=" + cake +
+                ", orderId=" + orderId +
+                '}';
     }
 }

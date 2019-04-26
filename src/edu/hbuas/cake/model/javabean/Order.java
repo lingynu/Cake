@@ -57,4 +57,16 @@ public class Order {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", creationTime='" + creationTime + '\'' +
+                ", allPrice=" + allPrice +
+                ", status='" + status + '\'' +
+                ", userId=" + userId +
+                ", address=" + address +
+                '}';
+    }
 }

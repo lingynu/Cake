@@ -38,4 +38,14 @@ public class News {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "newsId=" + newsId +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", details='" + details + '\'' +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

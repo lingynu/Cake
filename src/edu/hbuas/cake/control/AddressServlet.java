@@ -4,6 +4,7 @@ package edu.hbuas.cake.control;
 
 import edu.hbuas.cake.model.dao.AddressDAO;
 import edu.hbuas.cake.model.dao.AddressDAOImp;
+import edu.hbuas.cake.model.javabean.Address;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "AddressServlet", urlPatterns = "/AddressServlet")
 public class AddressServlet extends HttpServlet {
@@ -53,7 +55,16 @@ public class AddressServlet extends HttpServlet {
 
     //展示用户所有收货地址
     protected void show(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String userId=request.getParameter("userId");
+        try {
+            List<Address> addresses=addressDAO.listAllAddress(Integer.parseInt(userId));
+            request.setAttribute("manyAddress",addresses);
+            System.out.println(addresses);
+            request.getRequestDispatcher("confirmOrder.jsp").forward(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("这是addressServlet里的show方法，我出错了");
+        }
     }
 
     //添加一个收货地址

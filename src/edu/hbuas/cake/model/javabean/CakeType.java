@@ -3,7 +3,7 @@ package edu.hbuas.cake.model.javabean;
 //这是蛋糕类型类
 public class CakeType {
     private int cakeTypeId;
-    private int size;
+    private String size;
     private String flavor;
 
     public int getCakeTypeId() {
@@ -14,11 +14,11 @@ public class CakeType {
         this.cakeTypeId = cakeTypeId;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -28,5 +28,14 @@ public class CakeType {
 
     public void setFlavor(String flavor) {
         this.flavor = flavor;
+    }
+
+    @Override
+    public String toString() {
+        return "CakeType{" +
+                "cakeTypeId=" + cakeTypeId +
+                ", size='" + size + '\'' +
+                ", flavor='" + flavor + '\'' +
+                '}';
     }
 }
