@@ -59,6 +59,10 @@ public class CommentServlet extends HttpServlet {
                 submitCommentReply(request, response);
                 break;
             }
+            case "submitCommentReplyByAjax":{
+                submitCommentReplyByAjax(request, response);
+                break;
+            }
             case "addLikeByCommentId":{
                 addLikeByCommentId(request, response);
                 break;
@@ -147,13 +151,28 @@ public class CommentServlet extends HttpServlet {
         CommentReply commentReply = commentService.processSubmitCommentReply(request, response);
         boolean result = commentReplyDAO.addCommentReply(commentReply);
 
-        if (result){
-            System.out.println("数据库添加回复评论成功");
-            //评论成功后JSP页面弹框提示，确认之后返回订单页面
-        }else{
-            System.out.println("数据库添加回复评论失败");
-            //评论失败后。。。
+        try {
+            if (result){
+                System.out.println("数据库添加回复评论成功");
+                response.getWriter().print(commentReply);
+                response.getWriter().close();
+                //评论成功后JSP页面弹框提示，确认之后返回订单页面
+            }else{
+                System.out.println("数据库添加回复评论失败");
+                //评论失败后。。。
+            }
+        }catch (IOException e){
+            e.getStackTrace();
         }
+
+    }
+
+    /**
+     * Ajax提交评论回复的方法
+     * @param request
+     * @param response
+     */
+    private void submitCommentReplyByAjax(HttpServletRequest request, HttpServletResponse response) {
 
     }
 

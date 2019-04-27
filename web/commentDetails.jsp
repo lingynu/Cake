@@ -28,6 +28,7 @@
             </div>
             <div class="detail-content">
                 <div class="detail-comment">
+                    <input type="hidden" value="${requestScope.comment.commentId}" id="commentId"/>
                     <input type="hidden" value="${requestScope.comment.score}" id="score"/>
                     <table>
                         <tr>
@@ -49,10 +50,10 @@
                     </div>
                 </div>
                 <div class="reply">
-                    <form class="form-horizontal" action="CommentServlet?method=submitCommentReply&userId=1&cakeId=1&commentId=${requestScope.comment.commentId}" method="post">
+                    <form class="form-horizontal">
                         <div class="form-group">
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="replyComment" name="replyContent" rows="3" placeholder="回复 用户名"></textarea>
+                                <textarea class="form-control" id="replyContent" name="replyContent" rows="3" placeholder="回复 ${requestScope.comment.nickname}"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
