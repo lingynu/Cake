@@ -1,0 +1,93 @@
+body{
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    background-color: gray;
+}
+.logo{
+    text-align: left;
+}
+hr{
+    width: 100%;
+    border: 2px solid red;
+}
+.top,
+.top-order{
+    text-align: center;
+}
+.top-order div{
+    display: inline-block;
+}
+.main{
+    margin: auto;
+    width: 80%;
+    height: 500px;
+    background-color: white;
+}
+.up{
+    width: 100%;
+    height: 360px;
+}
+.left{
+    float: left;
+    width: 24%;
+    height: 350px;
+    border: 1px solid gray;
+}
+.right{
+    float: right;
+    width: 75%;
+    height: 350px;
+    padding-top: 40px;
+    border: 1px solid gray;
+}
+.commentScore{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.down{
+    margin-top: 10px;
+}
+.down button{
+    width: 200px;
+}
+.down input{
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+table{
+    float: left;
+    border-collapse: collapse;
+    margin-right: 20px;
+}
+td{
+    width: 14px;
+    height: 30px;
+}
+td:nth-child(odd){
+    background-image: url(/images/s_l_g.png);
+    padding-right: 0px;
+}
+td:nth-child(even){
+    background-image: url(/images/s_r_g.png);
+}
+span{
+    float: left;
+    margin-right: 20px;
+    padding-top: 7px;
+}
+.col-sm-10{
+    width: 100%;
+    margin-top: 20px;
+}
+.form-control{
+    float: left;
+    width: 75%;
+}
+#score{
+    border-style: none;
+    width: 20px;
+    text-align: center;
+}

@@ -1,0 +1,99 @@
+body{
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+}
+.logo{
+    text-align: left;
+}
+hr{
+    width: 100%;
+    border: 2px solid red;
+}
+.content{
+    margin: auto;
+    width: 90%;
+    overflow:auto;
+}
+.contentleft{
+    float: left;
+    width: 80%;
+    height: 100%;
+    border: 1px solid gray;
+}
+.contentright{
+    width: 20%;
+    border: 1px solid gray;
+}
+.detail-user{
+    float: left;
+    width: 15%;
+    height: 100%;
+    border: 1px solid gray;
+}
+.detail-user img{
+    width: 50px;
+    height: 50px;
+}
+.detail-content{
+    float: left;
+    width: 84%;
+    overflow:auto;
+    border: 1px solid gray;
+}
+.detail-comment{
+    height: 150px;
+    background-color: azure;
+}
+.detail{
+    text-align: left;
+}
+.reply{
+    width: 97%;
+    text-align: center;
+}
+.contentright{
+    float: left;
+    width: 19%;
+    border: 1px solid gray;
+}
+.col-sm-10{
+    float: right;
+    margin-top: 20px;
+    width: 98%;
+}
+.col-sm-offset-2 {
+    margin-left: 0px;
+}
+.col-sm-offset-2 button{
+    float: right;
+}
+.detail-reply{
+    margin-top: 20px;
+    width: 100%;
+    overflow:auto;
+}
+.li{
+    list-style: none;
+    width: 100%;
+    background-color: azure;
+}
+.lidiv{
+    text-align: left;
+}
+table{
+    border-collapse: collapse;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+td{
+    width: 14px;
+    height: 30px;
+}
+td:nth-child(odd){
+    background-image: url("/images/s_l_g.png");
+}
+td:nth-child(even){
+    background-image: url("/images/s_r_g.png");
+}
+
