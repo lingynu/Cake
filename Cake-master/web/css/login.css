@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* CSS reset */
+*{ font-family:"microsoft yahei",simsun,Tahoma,sans-serif;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+fieldset,img {border:0; }
+ol,ul {list-style:none; }
+h1,h2,h3,h4,h5,h6,button,input,select,textarea {font-size:100%;}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0; border:0;}
+table {border-collapse:collapse;border-spacing:0;}
+i, cite, em, var, dfn, address {font-style: normal;}
+body{ font-size:14px;}
+a{color: #313131;text-decoration: none; }
+a:hover{text-decoration: underline;}
+a:active, a:focus{outline:none}
+a[href^="http://tongji.baidu.com"]{display: none;}
+.fl{float: left;}
+.fr{float: right;}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; font-size:0;}
+.clearfix{zoom:1;clear:both;}
+.clear{clear:both; height:0; line-height:0; font-size:0;}
+.hidden,.none{display: none;}
+
+
+
+/*.w1060{ width:1060px; height:auto; margin:0 auto;}*/
+.padding_nei{ /*写padding不撑开*/
+	-webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.main01 .sousuo div{    
+	-webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    -ms-border-radius:17px;
+    -o-border-radius:17px; 
+	border-radius:17px;	
+	}
+	
+.w1100{ width:1100px; height:auto; margin:0 auto;}
+.w1096{ width:1096px; height:auto; margin:0 auto;}
+
+/*注册页面*/
+
+.login_bj{height:950px;  background:url(../images/slid.jpg) 50% 50% no-repeat; background-size: 100% 100%;}
+.zhuce_body{ float:left; width:100%; height:auto;}
+.zhuce_body .zhuce_kong{ position:absolute; top:50%; left:50%; width:600px; height:478px; margin-left:-300px; margin-top:-239px;}
+.zhuce_body .zhuce_kong .zc{width:600px; height:500px;position: relative;top: -60px;}
+.zhuce_body .zhuce_kong .zc .bj_bai{ float:left; width:314px; height:850px; padding-left:50px; background:#FFF;}
+.zhuce_body .zhuce_kong .zc .bj_bai h3{ font:16px/70px "微软雅黑", "黑体"; color:#333333; width:270px; text-align:center;}
+.title{position: relative;left: -50px;top: 25px;}
+.zhuce_body .zhuce_kong .zc .bj_right{ float:left;width:185px; height:850px; padding-left:51px; background:#f8f8f8;}
+.zhuce_kong > p{font:16px/70px "微软雅黑", "黑体"; text-align:center; color:#fff;}
+.zhuce_body .zhuce_kong .zc .bj_bai .kuang_txt{ width:200px; height:32px; border:1px solid #dddddd; line-height:10px; padding-left:32px; color:#b1a9a9;  margin-bottom:10px; }
+.zhuce_body .zhuce_kong .zc .bj_bai .btn_zhuce{ width:270px; height:33px; background:#37b5f9; font-size:14px; line-height:33px; text-align:center; border:0px; color:#fff; border-radius:3px; cursor:pointer;
+
+}
+.high{line-height: 2px;}
+
+.zhuce_body .zhuce_kong .zc .bj_bai .name{background:url(../images/registerimages/zc_06.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .nickname{background:url(../images/registerimages/zc_06.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .sex{background:url(../images/registerimages/zc_06.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .age{background:url(../images/registerimages/zc_06.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .phone{background:url(../images/registerimages/zc_06.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .email{background:url(../images/registerimages/zc_12.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .password{background:url(../images/registerimages/zc_16.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .passwordcheck{background:url(../images/registerimages/zc_16.jpg) no-repeat 10px 10px;}
+.zhuce_body .zhuce_kong .zc .bj_bai .yanzm{background:url(../images/registerimages/zc_19.jpg) no-repeat 10px 10px; margin-bottom:0px;}
+
+.zhuce_body .zhuce_kong .zc .bj_bai .hui_kuang{ float:left; width:97px; height:31px; border:1px solid #dddddd;}
+.zhuce_body .zhuce_kong .zc .bj_bai .shuaxin{ float:left; margin:0px 0 0 150px; width:14px; height:14px;padding-top: 10px;position: relative;left: -50px;}
+.zhuce_body .zhuce_kong .zc .bj_bai div{ float:left; width:100%; line-height:43px;}
+.zhuce_body .zhuce_kong .zc .bj_bai div input{ float:left; margin-top:15px;}
+.zhuce_body .zhuce_kong .zc .bj_bai div span{ padding-left:5px;}
+.zhuce_body .zhuce_kong .zc .bj_bai div .lan{ color:#19aaf8; padding-left:0px;}
+/*.zhuce_body .zhuce_kong .zc .bj_bai .btn_xieyi{position: relative;bottom: -50px;}*/
+
+
+.zhuce_body .zhuce_kong .zc .bj_right P { width:135px; font:12px/60px ""; color:#999999;}
+.zhuce_body .zhuce_kong .zc .bj_right P a{ color:#37b5f9;}
+.zhuce_body .zhuce_kong .zc .bj_right > a{ float:left; width:82px; height:28px; padding-left:51px; line-height:28px; margin-bottom:12px; border-radius:3px; }
+.zhuce_body .zhuce_kong .zc .bj_right .zhuce_qq{ border:1px solid #37b5f9; color:#37b5f9; background:url(../images/registerimages/zc_03.jpg) no-repeat 28px 7px #fff;}
+.zhuce_body .zhuce_kong .zc .bj_right .zhuce_wb{ border:1px solid #f26d7e; color:#f26d7e; background:url(../images/registerimages/zc_10.jpg) no-repeat 28px 7px #fff;}
+.zhuce_body .zhuce_kong .zc .bj_right .zhuce_wx{ border:1px solid #00c800; color:#00c800; background:url(../images/registerimages/zc_15.jpg) no-repeat 28px 7px #fff;}
+
+.msg{font-size: 13px;}
+.onError{color: red;}
+.onSuccess{color: #00c800;}
+.zhuce{text-decoration: none;}
+#biaoge{border-collapse:separate;
+border-spacing: 30px 5px;
+}
+
+
+
+
+.a-upload {
+    width:165px; height:22px;
+    padding: 4px 4px;
+    padding-left:32px;
+    line-height: 22px;
+    position: relative;
+    cursor: pointer;
+    color:#b1a9a9;
+    background: #fafafa;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-bottom:10px
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
