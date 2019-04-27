@@ -14,11 +14,16 @@ public interface CakeDAO {
     public Cake listCake(int cakeId);
     //根据尺寸和口味查询到对应类型id，再根据类型id查询所有符合的蛋糕
     public List<Cake> listTypeCake(String size,String flavor);
-    //根据尺寸和口味查询到对应类型id，再根据类型id查询所有符合口味类型的蛋糕
+    //根据折扣查询到对应折扣id,再根据折扣id查询所有符合的蛋糕
+    public List<Cake> listSalesCake(String sales);
+    //查询所有的折扣
+    public List<Cake> listAllCountOfSales();
     //根据价格区间查询所有蛋糕
     public List<Cake> listPriceCake(double minPrice, double maxPrice);
     //根据名字查询蛋糕
     public List<Cake> listNameCake(String cakeName);
+    //根据输入的值按蛋糕名字口味和尺寸进行模糊查找
+    public List<Cake> listMoHuSearch(String mohuzhi);
 
 
     //后台

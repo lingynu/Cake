@@ -6,6 +6,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+    <%--<script>
+        $(document).ready(function(){
+            $("img[src='CodeServlet']").click(function (){
+                $(this).attr("src","CodeServlet?erwr="+Math.random());
+            });
+            $("#username").blur(function(){
+                var username=$(this).val();
+                var xhr=new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if (xhr.readyState==4&&xhr.status==200) {
+                        var result=xhr.responseText;
+                        if(result=='false'){
+                            alert("用户名或者密码不存在");
+                        }
+                    }
+                };
+                xhr.open("get","/UserServlet?method=checkUserExist&username="+username);
+                xhr.send(null);
+            });
+            $("#code").blur(function (){
+                $.ajax({url="/UserServlet?method=checkCode&code="+code,type:"get",sucess:function (data){
+                        if (data=='false'){
+                            alert("验证码输入错误")；
+                        }
+                    }})
+            })
+        })
+    </script>--%>
 <div class="header">
     <div class="container">
         <nav class="navbar navbar-default" role="navigation">
@@ -23,16 +53,16 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.jsp" class="active">首页</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">买买买<b class="caret"></b></a>
+                        <a href="products.jsp" class="dropdown-toggle">买买买</a>
                     </li>
                     <li class="dropdown grid">
-                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">我的订单<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">我的订单</a>
                     </li>
                     <li class="dropdown grid">
-                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">新品促销<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">新品促销</a>
                     </li>
                     <li class="dropdown grid">
-                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">关于我们<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">关于我们</a>
                     </li>
                 </ul>
         ..
@@ -44,12 +74,17 @@
             <div class="header-right search-box">
                 <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                 <div class="search">
-                    <form class="navbar-form">
-                        <input type="text" class="form-control">
-                        <button type="submit" class="btn btn-default" aria-label="Left Align">
-                            搜一搜
-                        </button>
-                    </form>
+                    <div>
+                        <form class="navbar-form" action="CakeServlet?method=listMoHuZhiCake" method="post">
+                            <input type="text" class="form-control" name="mohuzhi" id="mohuzhi">
+                            <input type="submit" class="btn btn-default" id="bu" aria-label="Center Align" value="搜索">
+                        </form>
+                    </div>
+                    <div id="popDiv">
+                        <ul id="c">
+                            <li></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="header-right login">

@@ -7,7 +7,10 @@ import java.util.List;
 public interface CakeTypeDAO {
     //前台
     public List<CakeType> listAllType();
-
+    //查询所有口味数量
+    public List<CakeType> getAllCountOfFlavor();
+    //查询所有尺寸数量
+    public List<CakeType> getAllCountOfSize();
     //后台
 
     public boolean addType(CakeType type);

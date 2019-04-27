@@ -6,6 +6,15 @@ public class CakeType {
     private String size;
     private String flavor;
 
+    @Override
+    public String toString() {
+        return "CakeType{" +
+                "cakeTypeId=" + cakeTypeId +
+                ", size='" + size + '\'' +
+                ", flavor='" + flavor + '\'' +
+                '}';
+    }
+
     public int getCakeTypeId() {
         return cakeTypeId;
     }
