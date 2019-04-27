@@ -31,7 +31,7 @@
             <p>我们只是蛋糕的搬运工</p>
 			<a href="products.jsp">不够撑 看这里</a>
 			<div class="banner-text">			
-				<img src="images/2.png" alt=""/>	
+				<img src="images/2.1.png" alt=""/>
 			</div>
 		</div>
 	</div>			

@@ -23,28 +23,16 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.jsp" class="active">首页</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">买买买<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-4">
-
-                        </ul>
+                        <a href="products.jsp" class="dropdown-toggle">买买买</a>
                     </li>
                     <li class="dropdown grid">
-                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">我的订单<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-4">
-
-                        </ul>
+                        <a href="#" class="dropdown-toggle list1">我的订单</a>
                     </li>
                     <li class="dropdown grid">
-                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">新品促销<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-4">
-
-                        </ul>
+                        <a href="news.jsp" class="dropdown-toggle list1">制作分享</a>
                     </li>
                     <li class="dropdown grid">
-                        <a href="#" class="dropdown-toggle list1" data-toggle="dropdown">关于我们<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-
-                        </ul>
+                        <a href="#" class="dropdown-toggle list1">关于我们</a>
                     </li>
                 </ul>
                 <!--/.navbar-collapse-->
