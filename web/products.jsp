@@ -1,4 +1,16 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2019/4/14
+  Time: 16:48
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<C:if test="${empty requestScope.allCake}">
+	<C:redirect url="/CakeServlet?method=listAllCake&page=1&count=6"></C:redirect>
+</C:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +26,21 @@
 <link href="css/form.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <script src="js/jquery.min.js"></script>
+	<script src ="js/jquery-2.1.4.min.js"></script>
+
+	<script>
+        $(document).ready(function () {
+            $(".item_add items").click(function(){
+                $.post("/CakeServlet",{"method":"buyCake","cakeId":${m.cakeId}},function(data){
+                    if(data=='true'){
+                        alert("添加成功");
+                    }
+                })
+            });
+        })
+	</script>
+
+
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //js -->	
 <!-- cart -->
@@ -29,9 +56,12 @@
 		</script>
 <!-- //the jScrollPane script -->
 <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
-<!-- the mousewheel plugin -->		
+<!-- the mousewheel plugin -->
+
+
 </head>
 <body>
+
 	<!--header-->
 		<%@include file="top.jsp"%>
 	<!--//header-->
@@ -40,89 +70,11 @@
 		<div class="container">
 			<h2>我们的蛋糕</h2>
 			<div class="col-md-9 product-model-sec">
+				<C:forEach var="m" items="${requestScope.allCake}"   varStatus="s">
 				<div class="product-grid">
 					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m1.png" class="img-responsive" alt="">
-							<div class="b-wrapper">
-								<h4 class="b-animate b-from-left  b-delay03">							
-									<button>详情</button>
-								</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>粉色少女心蛋糕</h4>
-							<span class="item_price">200.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>230.00</del></p>
-								<p class="disc">[15% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>												
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m2.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button>详情</button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>紫色玫瑰蛋糕</h4>
-							<span class="item_price">220.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>250.00</del></p>
-								<p class="disc">[12% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>						
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m3.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button> 详情 </button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>彩色绿油蛋糕</h4>
-							<span class="item_price">180.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>300.00</del></p>
-								<p class="disc">[30% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>						
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m4.png" class="img-responsive" alt=""/>
+							<img style="height: 180px" src=${m.imageUrl} class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">							
 							<button> 详情</button>
@@ -132,148 +84,23 @@
 					</a>				
 					<div class="product-info simpleCart_shelfItem">
 						<div class="product-info-cust prt_name">
-							<h4>巧克力丝滑蛋糕</h4>
-							<span class="item_price">100.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>200.00</del></p>
-								<p class="disc">[50% 折扣]</p>
-							</div>
+                            <h1>${m.cakeId}</h1>
+							<h4>${m.cakeName}</h4>
+							<span class="item_price">${m.price}</span>
 							<input type="text" class="item_quantity" value="1" />
+							<a href="${pageContext.request.contextPath}/CartServlet?method=buyCake&cakeId=${m.cakeId}"/>
 							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>							
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m5.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button> 详情 </button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>粉嘟嘟鲜花蛋糕</h4>
-							<span class="item_price">230.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>270.00</del></p>
-								<p class="disc">[16% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>							
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m6.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button> 详情 </button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>巧克力水果蛋糕</h4>
-							<span class="item_price">210.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>2300.00</del></p>
-								<p class="disc">[15% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
+
 							<div class="clearfix"> </div>
 						</div>						
 					</div>
 				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m7.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button> 详情</button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>炽热爱情蛋糕</h4>
-							<span class="item_price">260.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>300.00</del></p>
-								<p class="disc">[34% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>						
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m8.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button> 详情</button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>黄金致富蛋糕</h4>
-							<span class="item_price">180.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>200.00</del></p>
-								<p class="disc">[10% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>							
-					</div>
-				</div>
-				<div class="product-grid">
-					<a href="single.jsp">
-						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="images/m9.png" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">							
-							<button> 详情</button>
-							</h4>
-							</div>
-						</div>
-					</a>				
-					<div class="product-info simpleCart_shelfItem">
-						<div class="product-info-cust prt_name">
-							<h4>麦香白巧克力蛋糕</h4>
-							<span class="item_price">200.00</span>
-							<div class="ofr">
-								<p class="pric1"><del>300.00</del></p>
-								<p class="disc">[43% 折扣]</p>
-							</div>
-							<input type="text" class="item_quantity" value="1" />
-							<input type="button" class="item_add items" value="Add">
-							<div class="clearfix"> </div>
-						</div>						
-					</div>
-				</div>
+				</C:forEach>
+				<a href="/deliciousFood_war_exploded/CakeServlet?method=listAllCake&page=1&count=6">首页</a>
+				<a href="/deliciousFood_war_exploded/CakeServlet?method=listAllCake&page=${requestScope.pageBean.previousPage}&count=6">上一页</a>
+				<a href="/deliciousFood_war_exploded/CakeServlet?method=listAllCake&page=${requestScope.pageBean.nextPage}&count=6">下一页</a>
+				<a href="/deliciousFood_war_exploded/CakeServlet?method=listAllCake&page=${requestScope.pageBean.allPage}&count=6">尾页</a>
+				<span>当前第${requestScope.pageBean.nowPage}页/总共${requestScope.pageBean.allPage}页 ,每页${requestScope.pageBean.everyPageCount}条/总共${requestScope.pageBean.allCount}条</span>
 			</div>	
 			<div class="col-md-3 rsidebar span_1_of_left">
 				<section  class="sky-form">
