@@ -6,6 +6,7 @@ public class Comment {
     private String nickname;
     private String content;
     private float score;
+    private int like;
     private int userId;
     private int cakeId;
 
@@ -41,6 +42,14 @@ public class Comment {
         this.score = score;
     }
 
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -55,5 +64,18 @@ public class Comment {
 
     public void setCakeId(int cakeId) {
         this.cakeId = cakeId;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", nickname='" + nickname + '\'' +
+                ", content='" + content + '\'' +
+                ", score=" + score +
+                ", like=" + like +
+                ", userId=" + userId +
+                ", cakeId=" + cakeId +
+                '}';
     }
 }

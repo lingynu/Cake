@@ -59,8 +59,13 @@ public class CommentServlet extends HttpServlet {
                 submitCommentReply(request, response);
                 break;
             }
+            case "addLikeByCommentId":{
+                addLikeByCommentId(request, response);
+                break;
+            }
         }
     }
+
 
     /**
      * 订单完成后的商品评论方法
@@ -139,7 +144,7 @@ public class CommentServlet extends HttpServlet {
      */
     private void submitCommentReply(HttpServletRequest request, HttpServletResponse response) {
 
-        CommentReply commentReply = commentService.processsSbmitCommentReply(request, response);
+        CommentReply commentReply = commentService.processSubmitCommentReply(request, response);
         boolean result = commentReplyDAO.addCommentReply(commentReply);
 
         if (result){
@@ -150,6 +155,23 @@ public class CommentServlet extends HttpServlet {
             //评论失败后。。。
         }
 
+    }
+
+    /**
+     * 通过CommentId进行Ajax点赞方法
+     * @param request
+     * @param response
+     */
+    private void addLikeByCommentId(HttpServletRequest request, HttpServletResponse response) {
+
+        try{
+            boolean result = commentService.processAddLikeByCommentId(request, response);
+
+            response.getWriter().print(result);
+            response.getWriter().close();
+        }catch (IOException e){
+            e.getStackTrace();
+        }
     }
 
 }

@@ -18,5 +18,7 @@ public interface CommentService {
     //处理commentId查找评论
     public Comment processListCommentById(int commentId);
     //处理提交评论回复
-    public CommentReply processsSbmitCommentReply(HttpServletRequest request, HttpServletResponse response);
+    public CommentReply processSubmitCommentReply(HttpServletRequest request, HttpServletResponse response);
+    //处理Ajax点赞
+    public boolean processAddLikeByCommentId(HttpServletRequest request, HttpServletResponse response);
 }

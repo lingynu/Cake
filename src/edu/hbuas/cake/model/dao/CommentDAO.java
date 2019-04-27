@@ -16,4 +16,6 @@ public interface CommentDAO {
     public List<CommentReply> listCommentReply(int userId, int cakeId, int commentId);
     //通过commentId查找评论信息
     public Comment listCommentById(int commentId);
+    //通过commentId进行点赞
+    public boolean addLikeByCommentId(int commentId);
 }

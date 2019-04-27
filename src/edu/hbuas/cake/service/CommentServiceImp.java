@@ -79,7 +79,7 @@ public class CommentServiceImp implements CommentService {
     }
 
     @Override
-    public CommentReply processsSbmitCommentReply(HttpServletRequest request, HttpServletResponse response) {
+    public CommentReply processSubmitCommentReply(HttpServletRequest request, HttpServletResponse response) {
         String userId = request.getParameter("userId");
         String cakeId = request.getParameter("cakeId");
         String commentId = request.getParameter("commentId");
@@ -96,5 +96,18 @@ public class CommentServiceImp implements CommentService {
         commentReply.setContent(content);
 
         return commentReply;
+    }
+
+    @Override
+    public boolean processAddLikeByCommentId(HttpServletRequest request, HttpServletResponse response) {
+        String commentId=request.getParameter("commentId");
+
+        boolean result = commentDAO.addLikeByCommentId(Integer.parseInt(commentId));
+        if (result){
+            System.out.println("数据库更新like + 1成功");
+        }else {
+            System.out.println("数据库更新like + 1失败");
+        }
+        return result;
     }
 }

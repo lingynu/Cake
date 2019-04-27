@@ -45,8 +45,9 @@
                             ${n.content}
                         </div>
                         <div class="lirightbotton">
-                            <a class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 0
+                            <input type="hidden" value="${n.commentId}" id="commentId"/>
+                            <a class="btn btn-default btn-lg" id="like">
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><div id="likeNum">${n.like}</div>
                             </a>
                             <a class="reviews" href="/CommentServlet?method=listCommentReply&userId=1&cakeId=1&commentId=${n.commentId}">
                                 <img src="images/message.png">

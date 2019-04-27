@@ -49,8 +49,8 @@ public class CommentDAOImp extends BaseDAOImp implements CommentDAO {
             pre.setString(1 ,comment.getNickname());
             pre.setString(2 ,comment.getContent());
             pre.setFloat(3 ,comment.getScore());
-            pre.setLong(4 ,comment.getUserId());
-            pre.setLong(5 ,comment.getCakeId());
+            pre.setInt(4 ,comment.getUserId());
+            pre.setInt(5 ,comment.getCakeId());
 
             result = pre.executeUpdate()>0?true:false;
 
@@ -73,10 +73,10 @@ public class CommentDAOImp extends BaseDAOImp implements CommentDAO {
                 com.setNickname(rs.getString("nickname"));
                 com.setContent(rs.getString("content"));
                 com.setScore(rs.getFloat("score"));
+                com.setLike(rs.getInt("like"));
                 com.setUserId(rs.getInt("userId"));
                 com.setCakeId(rs.getInt("cakeId"));
 
-                com.setCakeId(1);
 
                 comment.add(com);
 
@@ -139,22 +139,29 @@ public class CommentDAOImp extends BaseDAOImp implements CommentDAO {
                 comment.setNickname(rs.getString("nickname"));
                 comment.setContent(rs.getString("content"));
                 comment.setScore(rs.getFloat("score"));
+                comment.setLike(rs.getInt("like"));
                 comment.setUserId(rs.getInt("userId"));
                 comment.setCakeId(rs.getInt("cakeId"));
             }
-
-//            PreparedStatement pre = getPre(listCommentByIdSQL);
-//            pre.setInt(1, comment.getCommentId());
-//            pre.setString(2, comment.getNickname());
-//            pre.setString(3, comment.getContent());
-//            pre.setFloat(4, comment.getScore());
-//            pre.setInt(5, comment.getUserId());
-//            pre.setInt(6, comment.getCakeId());
 
         }catch (SQLException e){
             e.printStackTrace();
         }
         return comment;
+    }
+
+    @Override
+    public boolean addLikeByCommentId(int commentId) {
+        boolean result = false;
+
+        try {
+            int updateNum = getSta().executeUpdate("update comment set `like` = `like` + 1 where id = " + commentId);
+
+            result = updateNum >= 1?true:false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 

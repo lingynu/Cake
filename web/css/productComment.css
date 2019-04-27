@@ -67,6 +67,13 @@ td:nth-child(even){
     height: 20%;
     text-align: right;
 }
+a span{
+    float: left;
+}
+#likeNum{
+    float: left;
+    margin-left: 5px;
+}
 img{
     width: 50px;
     height: 50px;
