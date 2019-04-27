@@ -1,5 +1,6 @@
 package edu.hbuas.cake.model.dao;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import edu.hbuas.cake.model.javabean.Address;
 import edu.hbuas.cake.model.javabean.Order;
 import edu.hbuas.cake.model.javabean.OrderDetail;
@@ -13,12 +14,14 @@ import java.util.List;
 
 public class OrderDAOImp extends BaseDAOImp implements OrderDAO{
     @Override
-    public List<Order> listAllOrders(int userId) {
+    public List<Order> listAllOrders(int userId, int page, int count) {
         List<Order> order=new ArrayList<>();
-        String listOrderSQL = "select * from `order` o,address a where o.userId=? and o.addressId=a.id";
+        String listOrderSQL = "select * from `order` o,address a where o.userId=? and o.addressId=a.id limit ?,?";
         try{
             PreparedStatement pre=getPre(listOrderSQL);
             pre.setInt(1,userId);
+            pre.setInt(2,(page-1)*count);
+            pre.setInt(3,count);
             ResultSet rs=pre.executeQuery();
             while (rs.next()){
                 Order o=new Order();
@@ -136,6 +139,50 @@ public class OrderDAOImp extends BaseDAOImp implements OrderDAO{
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public int getAllCountOrder(int userId) {
+        int result=0;
+        ResultSet rs=null;
+        try{
+            rs=getSta().executeQuery("select count(id) from `order` where userId="+userId);
+            rs.next();
+            result=rs.getInt(1);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public Order listOrder(int orderId) {
+        String listOrderSQL = "select * from `order` o,address a where o.id=? and o.addressId=a.id";
+        Order order=new Order();
+        try{
+            PreparedStatement pre=getPre(listOrderSQL);
+            pre.setInt(1,orderId);
+            ResultSet rs=pre.executeQuery();
+            while (rs.next()){
+                order.setOrderId(rs.getInt("o.id"));
+                order.setCreationTime(rs.getString("o.creationTime"));
+                order.setAllPrice(rs.getDouble("o.allPrice"));
+                order.setStatus(rs.getString("o.status"));
+                order.setUserId(rs.getInt("o.userId"));
+
+//                Address a=new Address();
+//                a.setAddressId(rs.getInt("o.addressId"));
+//                a.setName(rs.getString("a.name"));
+//                a.setPhone(rs.getString("a.phone"));
+//                a.setPlace(rs.getString("a.place"));
+//                a.setUserId(rs.getInt("o.userId"));
+//
+//                order.setAddress(a);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return order;
     }
 
 }

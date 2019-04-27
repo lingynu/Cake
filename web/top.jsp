@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                     <li class="dropdown grid">
-                        <a href="${pageContext.request.contextPath}/OrderServlet?method=listOrders&userId=10000" class="dropdown-toggle list1" >我的订单<b class="caret"></b></a>
+                        <a href="showOrders.jsp" class="dropdown-toggle list1" >我的订单<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-4">
 
                         </ul>

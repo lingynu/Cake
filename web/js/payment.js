@@ -21,7 +21,7 @@
 // })
 
 function goPay() {
-    var orderId=$("#idP").text();
+    var orderId=$("#idSpan").html();
     console.log(orderId);
     $.ajax({
         type: "post",

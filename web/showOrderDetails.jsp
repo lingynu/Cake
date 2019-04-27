@@ -44,6 +44,10 @@
     </C:if>
     <br><br><br>
 </C:forEach>
-<a href="${pageContext.request.contextPath}/OrderServlet?method=listOrders&userId=10000">查看全部订单</a>        //${sessionScope.user.userId}
+<a href="showOrders.jsp">查看全部订单</a>        //${sessionScope.user.userId}
+
+<!--footer-->
+<%@include file="footer.jsp"%>
+<!--//footer-->
 </body>
 </html>

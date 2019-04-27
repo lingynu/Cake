@@ -1,13 +1,11 @@
 package edu.hbuas.cake.control;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import edu.hbuas.cake.model.dao.OrderDAO;
 import edu.hbuas.cake.model.dao.OrderDAOImp;
 import edu.hbuas.cake.model.dao.OrderDetailDAO;
 import edu.hbuas.cake.model.dao.OrderDetailDAOImp;
-import edu.hbuas.cake.model.javabean.Address;
-import edu.hbuas.cake.model.javabean.Cake;
-import edu.hbuas.cake.model.javabean.Order;
-import edu.hbuas.cake.model.javabean.OrderDetail;
+import edu.hbuas.cake.model.javabean.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "OrderServlet", urlPatterns = "/OrderServlet")
 public class OrderServlet extends HttpServlet {
@@ -56,6 +56,9 @@ public class OrderServlet extends HttpServlet {
             }
             case "listOrders":{
                 listOrders(request,response);
+            }
+            case "payOrder":{
+                payOrder(request,response);
             }
         }
     }
@@ -101,6 +104,7 @@ public class OrderServlet extends HttpServlet {
             if(result!=null){
                 request.setAttribute("toBePaidOrder",result);
                 request.getRequestDispatcher("payment.jsp").forward(request,response);
+
             }
             else {
                 System.out.println("后台传入数据有误");
@@ -143,8 +147,40 @@ public class OrderServlet extends HttpServlet {
 
     protected void listOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String userId=request.getParameter("userId");
-        List<Order> orders=orderDAO.listAllOrders(Integer.parseInt(userId));
-        request.setAttribute("orders",orders);
+        String page=request.getParameter("page");
+        String count=request.getParameter("count");
+
+        PageBean p=new PageBean();
+        p.setAllCount(orderDAO.getAllCountOrder(Integer.parseInt(userId)));
+        int allPages=p.getAllCount()%Integer.parseInt(count)==0?p.getAllCount()/Integer.parseInt(count):p.getAllCount()/Integer.parseInt(count)+1;
+        p.setAllPages(allPages);
+        p.setFirstPage(1);
+        p.setNowPage(Integer.parseInt(page));
+        p.setNextPage(p.getNowPage()==p.getAllPages()?p.getAllPages():p.getNowPage()+1);
+        p.setPreviousPage(Integer.parseInt(page)>1?Integer.parseInt(page)-1:1);
+        p.setEveryPageCount(Integer.parseInt(count));
+
+        request.setAttribute("pageBean",p);
+        List<Order> orders=orderDAO.listAllOrders(Integer.parseInt(userId),Integer.parseInt(page),Integer.parseInt(count));
+
+        Map<Order,List<OrderDetail>> allOrders=new HashMap<>();
+        for (Order o: orders){
+            List<OrderDetail> details=detailDAO.listAllOrderDetails(o.getOrderId());
+            allOrders.put(o,details);
+        }
+        request.setAttribute("allOrders",allOrders);
         request.getRequestDispatcher("showOrders.jsp").forward(request,response);
+    }
+
+    protected void payOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String orderId=request.getParameter("orderId");
+        Order order=orderDAO.listOrder(Integer.parseInt(orderId));
+        if(order!=null){
+            request.setAttribute("toBePaidOrder",order);
+            request.getRequestDispatcher("payment.jsp").forward(request,response);
+        }else {
+            System.out.println("后台传入数据有误");
+        }
+
     }
 }

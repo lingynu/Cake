@@ -46,6 +46,7 @@ public class OrderDetailDAOImp extends BaseDAOImp implements OrderDetailDAO {
                 details.add(detail);
 
             }
+            System.out.println(details);
 
         } catch (Exception e){
             e.printStackTrace();
